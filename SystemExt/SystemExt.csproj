@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="Extensions\System.Collections.Generic.IList{T}.cs" />
     <Compile Include="Extensions\System.DateTime.cs" />
     <Compile Include="Extensions\System.Int64.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
