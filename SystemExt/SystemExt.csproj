@@ -38,6 +38,7 @@
     <Compile Include="Extensions\System.Collections.Generic.IList{T}.cs" />
     <Compile Include="Extensions\System.DateTime.cs" />
     <Compile Include="Extensions\System.Int64.cs" />
+    <Compile Include="Extensions\System.String.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
