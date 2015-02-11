@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F89C3D16-B27F-4BF9-8BAB-F9209526F53E}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{5761CCD8-6F83-474A-97F0-3463025EF06F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SystemExt</RootNamespace>
-    <AssemblyName>SystemExt</AssemblyName>
+    <RootNamespace>SystemExt.Demo</RootNamespace>
+    <AssemblyName>SystemExt.Demo</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -33,15 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ApplicationChooser.cs" />
-    <Compile Include="Constants.cs" />
-    <Compile Include="Extensions\System.Collections.Generic.IList{T}.cs" />
-    <Compile Include="Extensions\System.DateTime.cs" />
-    <Compile Include="Extensions\System.Int64.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SystemExt\SystemExt.csproj">
+      <Project>{F89C3D16-B27F-4BF9-8BAB-F9209526F53E}</Project>
+      <Name>SystemExt</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
