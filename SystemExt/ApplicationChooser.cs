@@ -28,6 +28,11 @@ namespace SystemExt
     {
 
         /// <summary>
+        /// The index of the default entry.
+        /// </summary>
+        private int DefaultIndex;
+
+        /// <summary>
         /// The entry points which have been registered.
         /// </summary>
         private readonly IList<KeyValuePair<Func<string[], int>, string>> EntryPoints;
@@ -52,10 +57,13 @@ namespace SystemExt
         /// <param name="description">
         /// A description of this entry point.
         /// </param>
+        /// <param name="makeDefault">
+        /// Whether to make this entry point the default.
+        /// </param>
         /// <returns>
         /// This instance of <see cref="ApplicationChooser"/>.
         /// </returns>
-        public ApplicationChooser AddEntryPoint(Func<string[], int> entryPoint, string description)
+        public ApplicationChooser AddEntryPoint(Func<string[], int> entryPoint, string description, bool makeDefault = false)
         {
             if (entryPoint == null)
                 throw new ArgumentNullException("entryPoint");
@@ -64,6 +72,10 @@ namespace SystemExt
                 throw new ArgumentNullException("description");
 
             this.EntryPoints.Add(new KeyValuePair<Func<string[], int>, string>(entryPoint, description));
+
+            if (makeDefault)
+                this.DefaultIndex = this.EntryPoints.Count - 1;
+
             return this;
         }
 
@@ -89,14 +101,18 @@ namespace SystemExt
             {
                 // Prompt the user to enter a value.
                 Console.WriteLine();
-                Console.Write("=> ");
+                Console.Write("[{0}] => ", this.DefaultIndex);
 
                 // Read the value from the user.
-                int index;
                 var input = Console.ReadLine();
 
-                // Check the value is valid.
-                if (string.IsNullOrWhiteSpace(input) || !int.TryParse(input, out index) || index < 0 || index >= this.EntryPoints.Count)
+                // If the value is empty then use the default.
+                var index = -1;
+                if (string.IsNullOrWhiteSpace(input))
+                    index = DefaultIndex;
+
+                // If a value has been given ensure it is valid.
+                if (index < 0 && (!int.TryParse(input, out index) || index < 0 || index >= this.EntryPoints.Count))
                 {
                     Console.Error.WriteLine("You must enter a valid number between 0 and {0}.", this.EntryPoints.Count - 1);
                     continue;
