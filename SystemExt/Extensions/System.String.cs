@@ -14,24 +14,23 @@
  * the License.
  */
 
-using System;
 using System.Text;
 
 namespace SystemExt.Extensions
 {
 
     /// <summary>
-    /// Extension methods for the <see cref="String"/> class.
+    /// Extension methods for the <see cref="string"/> class.
     /// </summary>
     public static class System_String
     {
 
         /// <summary>
-        /// Create a new <see cref="String"/> which is <paramref name="self"/> repeated
+        /// Create a new <see cref="string"/> which is <paramref name="self"/> repeated
         /// <paramref name="times"/> times.
         /// </summary>
         /// <param name="self">
-        /// An instance of the <see cref="String"/> class.
+        /// An instance of the <see cref="string"/> class.
         /// </param>
         /// <param name="times">
         /// The number of times to repeat <see cref="times"/>.

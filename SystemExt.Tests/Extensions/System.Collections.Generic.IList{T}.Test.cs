@@ -15,7 +15,9 @@
  */
 
 using System.Collections.Generic;
+
 using SystemExt.Extensions;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SystemExt.Tests.Extensions
@@ -36,11 +38,11 @@ namespace SystemExt.Tests.Extensions
         {
             var testDataParent = new List<int>
             {
-                    1, 2, 3, 4, 5
+                1, 2, 3, 4, 5
             };
             var testDataChild = new List<int>
             {
-                    6, 7, 8, 9, 10
+                6, 7, 8, 9, 10
             };
 
             testDataParent.AddRange(testDataChild);
@@ -61,7 +63,7 @@ namespace SystemExt.Tests.Extensions
         {
             var testData = new List<int>
             {
-                    1, 2, 3, 4, 6
+                1, 2, 3, 4, 6
             };
 
             // Ensure that indexes in range return the correct values

@@ -28,7 +28,7 @@ namespace SystemExt
         /// <summary>
         /// A <see cref="DateTime"/> which represents the UNIX epoch.
         /// </summary>
-        internal readonly static DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+        internal static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
 
     }
 }

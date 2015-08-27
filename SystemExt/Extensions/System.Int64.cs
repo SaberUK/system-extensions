@@ -20,7 +20,7 @@ namespace SystemExt.Extensions
 {
 
     /// <summary>
-    /// Extension methods for the <see cref="Int64"/> struct.
+    /// Extension methods for the <see cref="long"/> struct.
     /// </summary>
     public static class System_Int64
     {
@@ -34,7 +34,7 @@ namespace SystemExt.Extensions
         /// </param>
         /// <returns>
         /// An instance of the <see cref="DateTime"/> class which represents the <paramref name="self"/>
-        /// seconds past the UNIX epoch. 
+        /// seconds past the UNIX epoch.
         /// </returns>
         public static DateTime FromUnixTime(this long self)
         {

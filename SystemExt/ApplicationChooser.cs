@@ -67,7 +67,7 @@ namespace SystemExt
         {
             if (entryPoint == null)
                 throw new ArgumentNullException("entryPoint");
-            
+
             if (string.IsNullOrWhiteSpace(description))
                 throw new ArgumentNullException("description");
 
@@ -109,7 +109,7 @@ namespace SystemExt
                 // If the value is empty then use the default.
                 var index = -1;
                 if (string.IsNullOrWhiteSpace(input))
-                    index = DefaultIndex;
+                    index = this.DefaultIndex;
 
                 // If a value has been given ensure it is valid.
                 if (index < 0 && (!int.TryParse(input, out index) || index < 0 || index >= this.EntryPoints.Count))
@@ -117,7 +117,7 @@ namespace SystemExt
                     Console.Error.WriteLine("You must enter a valid number between 0 and {0}.", this.EntryPoints.Count - 1);
                     continue;
                 }
-                
+
                 // Call the entry point.
                 return this.EntryPoints[index].Key(args);
             }

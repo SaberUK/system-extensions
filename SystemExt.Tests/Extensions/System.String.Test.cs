@@ -15,6 +15,7 @@
  */
 
 using SystemExt.Extensions;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SystemExt.Tests.Extensions
