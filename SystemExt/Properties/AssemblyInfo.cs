@@ -33,7 +33,7 @@ using System.Runtime.CompilerServices;
 // Version
 [assembly: AssemblyFileVersion("0.1.0.0")]
 [assembly: AssemblyInformationalVersion("0.1.0.0")]
-[assembly: AssemblyVersion("0.1.0.*")]
+[assembly: AssemblyVersion("0.1.0.0")]
 
 #if DEBUG
     [assembly: AssemblyConfiguration("Debug")]
