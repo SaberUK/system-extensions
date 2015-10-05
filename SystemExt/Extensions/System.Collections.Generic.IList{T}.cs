@@ -20,7 +20,7 @@ namespace SystemExt.Extensions
 {
 
     /// <summary>
-    /// Extension methods for the <see cref="IList{T}"/> struct.
+    /// Extension methods for the <see cref="IList{T}"/> interface.
     /// </summary>
     public static class System_Collections_Generic_IList_T
     {
