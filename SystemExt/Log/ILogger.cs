@@ -14,29 +14,25 @@
  * the License.
  */
 
-namespace SystemExt.Demo
+namespace SystemExt.Log
 {
 
     /// <summary>
-    /// Main class.
+    /// Defines methods to be implemented by loggers.
     /// </summary>
-    public static class Program
+    public interface ILogger
     {
 
         /// <summary>
-        /// Main entry point.
+        /// Write a message to this logger.
         /// </summary>
-        /// <param name="args">
-        /// Command line arguments.
+        /// <param name="component">
+        /// The component which is logging this message.
         /// </param>
-        /// <returns>
-        /// The code to terminate the application with on exit.
-        /// </returns>
-        private static int Main(string[] args)
-        {
-            return new ApplicationChooser()
-                .AddEntryPoint(Log.EntryPoint, "Run the SystemExt.Log demo")
-                .Run(args);
-        }
+        /// <param name="message">
+        /// A message to write to the loggers.
+        /// </param>
+        void Write(string component, string message);
+
     }
 }

@@ -39,6 +39,12 @@
     <Compile Include="Extensions\System.DateTime.cs" />
     <Compile Include="Extensions\System.Int64.cs" />
     <Compile Include="Extensions\System.String.cs" />
+    <Compile Include="Log\DebugLogger.cs" />
+    <Compile Include="Log\ILogger.cs" />
+    <Compile Include="Log\LoggerInfo.cs" />
+    <Compile Include="Log\LogLevel.cs" />
+    <Compile Include="Log\LogManager.cs" />
+    <Compile Include="Log\StreamLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TokenList.cs" />
   </ItemGroup>

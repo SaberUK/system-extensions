@@ -14,29 +14,43 @@
  * the License.
  */
 
-namespace SystemExt.Demo
+namespace SystemExt.Log
 {
 
     /// <summary>
-    /// Main class.
+    /// An enumeration of levels at which a message can be logged.
     /// </summary>
-    public static class Program
+    public enum LogLevel
     {
 
         /// <summary>
-        /// Main entry point.
+        /// Log nothing.
         /// </summary>
-        /// <param name="args">
-        /// Command line arguments.
-        /// </param>
-        /// <returns>
-        /// The code to terminate the application with on exit.
-        /// </returns>
-        private static int Main(string[] args)
-        {
-            return new ApplicationChooser()
-                .AddEntryPoint(Log.EntryPoint, "Run the SystemExt.Log demo")
-                .Run(args);
-        }
+        None,
+
+        /// <summary>
+        /// Log only critical messages.
+        /// </summary>
+        Critical,
+
+        /// <summary>
+        /// Log error messages and above.
+        /// </summary>
+        Error,
+
+        /// <summary>
+        /// Log warning messages and above.
+        /// </summary>
+        Warning,
+
+        /// <summary>
+        /// Log information messages and above.
+        /// </summary>
+        Information,
+
+        /// <summary>
+        /// Log all messages.
+        /// </summary>
+        Verbose,
     }
 }
