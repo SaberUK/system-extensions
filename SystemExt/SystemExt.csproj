@@ -35,6 +35,7 @@
   <ItemGroup>
     <Compile Include="ApplicationChooser.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="ConfigurationBase.cs" />
     <Compile Include="Extensions\System.Object.cs" />
     <Compile Include="Extensions\System.Collections.Generic.IList{T}.cs" />
     <Compile Include="Extensions\System.DateTime.cs" />
@@ -51,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
