@@ -14,9 +14,6 @@
  * the License.
  */
 
-using System;
-using System.IO;
-
 using SystemExt.Log;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
