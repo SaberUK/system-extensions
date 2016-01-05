@@ -36,7 +36,6 @@
     <Compile Include="ApplicationChooser.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="ConfigurationBase.cs" />
-    <Compile Include="Extensions\System.Object.cs" />
     <Compile Include="Extensions\System.Collections.Generic.IList{T}.cs" />
     <Compile Include="Extensions\System.DateTime.cs" />
     <Compile Include="Extensions\System.Int64.cs" />
@@ -47,6 +46,7 @@
     <Compile Include="Log\LogLevel.cs" />
     <Compile Include="Log\LogManager.cs" />
     <Compile Include="Log\StreamLogger.cs" />
+    <Compile Include="Option{T}.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TokenList.cs" />
   </ItemGroup>

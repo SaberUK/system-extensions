@@ -36,7 +36,6 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="ConfigurationBase.Test.cs" />
-    <Compile Include="Extensions\System.Object.Test.cs" />
     <Compile Include="Extensions\System.Collections.Generic.IList{T}.Test.cs" />
     <Compile Include="Extensions\System.DateTime.Test.cs" />
     <Compile Include="Extensions\System.Int64.Test.cs" />
@@ -44,6 +43,7 @@
     <Compile Include="Log\LoggerInfo.Test.cs" />
     <Compile Include="Log\StreamLogger.Test.cs" />
     <Compile Include="Log\DebugLogger.Test.cs" />
+    <Compile Include="Option{T}.Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TokenList.Test.cs" />
   </ItemGroup>
