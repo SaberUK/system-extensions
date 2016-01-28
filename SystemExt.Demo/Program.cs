@@ -14,6 +14,8 @@
  * the License.
  */
 
+using SystemExt.Terminal;
+
 namespace SystemExt.Demo
 {
 

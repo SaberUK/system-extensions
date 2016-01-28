@@ -17,6 +17,7 @@
 using System;
 
 using SystemExt.Log;
+using SystemExt.Terminal;
 
 namespace SystemExt.Demo
 {

@@ -18,7 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SystemExt
+namespace SystemExt.Terminal
 {
 
     /// <summary>
