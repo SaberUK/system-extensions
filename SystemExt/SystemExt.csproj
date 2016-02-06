@@ -53,6 +53,7 @@
     <Compile Include="Option{T}.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Terminal\ApplicationChooser.cs" />
+    <Compile Include="Terminal\Prompt.cs" />
     <Compile Include="TokenList.cs" />
   </ItemGroup>
   <ItemGroup>

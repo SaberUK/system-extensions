@@ -103,7 +103,7 @@ namespace SystemExt.Demo
         public static int EntryPoint(string[] args)
         {
             return new ApplicationChooser()
-                .AddEntryPoint(EchoServer, "Start a TCP echo server on port 9999")
+                .AddEntryPoint(EchoServer, "Start a TCP echo server")
                 .Run(args);
         }
 
@@ -118,7 +118,8 @@ namespace SystemExt.Demo
         /// </returns>
         private static int EchoServer(string[] arg)
         {
-            var server = new TCPServer<EchoServerClient>(IPAddress.Any, 9999);
+            var port = (ushort)Prompt.Integer("What port do you want to listen on", 9999, ushort.MinValue, ushort.MaxValue);
+            var server = new TCPServer<EchoServerClient>(IPAddress.Any, port);
             Console.WriteLine("Now listening on {0}, press any key to exit.", server.EndPoint);
             Console.ReadKey();
             server.Stop(true);
