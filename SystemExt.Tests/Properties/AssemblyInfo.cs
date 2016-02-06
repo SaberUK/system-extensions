@@ -16,20 +16,18 @@
 
 using System.Reflection;
 
+using SystemExt;
+
 // Application
 [assembly: AssemblyDescription("Unit Tests for System Extensions.")]
 [assembly: AssemblyProduct("System Extensions")]
 [assembly: AssemblyTitle("System Extensions Unit Tests")]
+[assembly: AssemblyVersion(Constants.Version)]
 
 // Author
 [assembly: AssemblyCompany("Peter \"SaberUK\" Powell")]
 [assembly: AssemblyCopyright("Copyright (C) 2014-2016 Peter \"SaberUK\" Powell")]
 [assembly: AssemblyTrademark("Copyright (C) 2014-2016 Peter \"SaberUK\" Powell")]
-
-// Version
-[assembly: AssemblyFileVersion("0.1.0.0")]
-[assembly: AssemblyInformationalVersion("0.1.0.0")]
-[assembly: AssemblyVersion("0.1.0.0")]
 
 #if DEBUG
     [assembly: AssemblyConfiguration("Debug")]

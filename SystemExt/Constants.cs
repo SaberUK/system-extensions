@@ -30,5 +30,10 @@ namespace SystemExt
         /// </summary>
         internal static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
 
+        /// <summary>
+        /// The version of System Extensions in use.
+        /// </summary>
+        internal const string Version = "0.1.0.*";
+
     }
 }
