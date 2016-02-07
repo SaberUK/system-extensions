@@ -92,14 +92,6 @@ namespace SystemExt.Tests
             // Ensure that the option has no value.
             Assert.IsFalse(result.HasValue);
 
-            // Ensure that an exception is thrown when trying to retrieve the value.
-            try
-            {
-                result.Get();
-                Assert.Fail("Calling Get() on Option{T}.None did not throw an InvalidOperationException!");
-            }
-            catch (InvalidOperationException) { }
-
             // Ensure that we get the default values.
             const int value = 42;
             Assert.AreEqual(value, result.GetOr(value));

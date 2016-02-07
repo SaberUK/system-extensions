@@ -159,7 +159,7 @@ namespace SystemExt
         public T Get()
         {
             if (!this.HasValue)
-                throw new InvalidOperationException(string.Format("Get was called on an empty SystemEx.Option<{0}>!", typeof(T)));
+                Environment.FailFast(string.Format("Get was called on an empty SystemEx.Option<{0}>!", typeof(T)));
 
             return this.Value;
         }
