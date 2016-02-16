@@ -38,6 +38,7 @@ namespace SystemExt.Demo
         {
             return new ApplicationChooser()
                 .AddEntryPoint(Log.EntryPoint, "Run the SystemExt.Log demo")
+                .AddEntryPoint(Network.EntryPoint, "Run the SystemExt.Network demo")
                 .Run(args);
         }
     }
