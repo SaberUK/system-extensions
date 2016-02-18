@@ -35,7 +35,7 @@ namespace SystemExt.Tests.Extensions
         /// Test the <see cref="System_Random.NextString"/> extension method.
         /// </summary>
         [TestMethod]
-        public void Test_System_Random_NextString()
+        public void NextString()
         {
             // Data source.
             var random = new Random();
