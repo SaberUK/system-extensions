@@ -117,6 +117,14 @@ namespace SystemExt.Network
         }
 
         /// <summary>
+        /// Detaches this client from its parent.
+        /// </summary>
+        internal void DetachSocket()
+        {
+            this.Server = null;
+        }
+
+        /// <summary>
         /// Assigns a socket to the client.
         /// </summary>
         /// <param name="server">

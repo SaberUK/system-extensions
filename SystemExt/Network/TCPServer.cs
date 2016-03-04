@@ -105,13 +105,14 @@ namespace SystemExt.Network
             this.Socket.Close();
             this.Socket = null;
 
-            // If we aren't stopping clients then we are done.
-            if (!closeClients)
-                return;
-
             // Terminate all client connections.
             foreach (var client in this.Clients.ToArray())
-                client.Close();
+            {
+                if (closeClients)
+                    client.Close();
+
+                client.DetachSocket();
+            }
         }
 
         /// <summary>
