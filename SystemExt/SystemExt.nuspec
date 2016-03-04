@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package >
+<package>
   <metadata>
     <id>$id$</id>
     <version>$version$</version>
@@ -10,7 +10,10 @@
     <projectUrl>https://github.com/SaberUK/system-extensions</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Initial release.</releaseNotes>
+    <releaseNotes>
+      - Implement a system for creating TCP servers.
+      - Use Environment.FailFast when calling Get on `Option&lt;T&gt;.None`.
+    </releaseNotes>
     <copyright>Copyright (C) 2014-2016 Peter "SaberUK" Powell &lt;petpow@saberuk.com&gt;</copyright>
     <tags>System Extensions</tags>
   </metadata>

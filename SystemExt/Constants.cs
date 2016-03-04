@@ -33,7 +33,7 @@ namespace SystemExt
         /// <summary>
         /// The version of System Extensions in use.
         /// </summary>
-        internal const string Version = "0.1.0.*";
+        internal const string Version = "0.2.0.*";
 
     }
 }
