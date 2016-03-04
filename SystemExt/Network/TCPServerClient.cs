@@ -36,14 +36,14 @@ namespace SystemExt.Network
         public IPEndPoint EndPoint { get; private set; }
 
         /// <summary>
+        /// The <see cref="TCPServer{TClient}"/> which created this instance.
+        /// </summary>
+        protected TCPServer<TClient> Server { get; private set; }
+
+        /// <summary>
         /// The buffer that bytes are stored in when read.
         /// </summary>
         private readonly byte[] ReadBuffer;
-
-        /// <summary>
-        /// The <see cref="TCPServer{TClient}"/> which created this instance.
-        /// </summary>
-        private TCPServer<TClient> Server;
 
         /// <summary>
         /// The underlying network socket.
