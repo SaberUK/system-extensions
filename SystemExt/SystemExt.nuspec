@@ -11,7 +11,9 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>
-- TCPServer#Stop should be public not internal.
+- Add an implementation defined data field to the TCPServer class.
+- Set TCPServerClient#Server to null when terminating the parent.
+- Make TCPServerClient#Server accessible from child classes.
     </releaseNotes>
     <copyright>Copyright (C) 2014-2016 Peter "SaberUK" Powell &lt;petpow@saberuk.com&gt;</copyright>
     <tags>System Extensions</tags>
