@@ -95,7 +95,7 @@ namespace SystemExt.Network
         /// <param name="closeClients">
         /// Whether to also stop clients that are connected to this server.
         /// </param>
-        internal void Stop(bool closeClients = false)
+        public void Stop(bool closeClients = false)
         {
             // If the socket is already dead we don't need to do anything.
             if (this.Socket == null)
