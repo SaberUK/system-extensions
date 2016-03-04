@@ -11,8 +11,7 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>
-      - Implement a system for creating TCP servers.
-      - Use Environment.FailFast when calling Get on `Option&lt;T&gt;.None`.
+- TCPServer#Stop should be public not internal.
     </releaseNotes>
     <copyright>Copyright (C) 2014-2016 Peter "SaberUK" Powell &lt;petpow@saberuk.com&gt;</copyright>
     <tags>System Extensions</tags>
