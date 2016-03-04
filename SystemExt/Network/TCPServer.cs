@@ -39,6 +39,11 @@ namespace SystemExt.Network
         }
 
         /// <summary>
+        /// Implementation defined data.
+        /// </summary>
+        public object Data;
+
+        /// <summary>
         /// The clients which have connected to this server.
         /// </summary>
         internal readonly List<TClient> Clients;
