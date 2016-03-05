@@ -43,7 +43,7 @@ namespace SystemExt.Network
         /// <param name="message">
         /// A human readable message which describes the network error.
         /// </param>
-        public NetworkError(string message)
+        internal NetworkError(string message)
         {
             this.Code = SocketError.SocketError;
             this.Message = message;
@@ -56,7 +56,7 @@ namespace SystemExt.Network
         /// <param name="exception">
         /// An exception which represents a network error.
         /// </param>
-        public NetworkError(Exception exception)
+        internal NetworkError(Exception exception)
         {
             for (var inner = exception; inner != null; inner = inner.InnerException)
             {
