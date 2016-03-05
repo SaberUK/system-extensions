@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 
 namespace SystemExt.Network
 {
@@ -67,6 +68,52 @@ namespace SystemExt.Network
         public void Close()
         {
             this.CloseInternal(null);
+        }
+
+        /// <summary>
+        /// Write a string to the client.
+        /// </summary>
+        /// <param name="data">
+        /// The string to write to the client.
+        /// </param>
+        /// <param name="encoding">
+        /// The encoding which the string should be decoded with.
+        /// </param>
+        /// <returns>
+        /// True if starting the write succeeded, otherwise false.
+        /// </returns>
+        public bool Write(string data, Encoding encoding = null)
+        {
+            return this.Write(data, 0, data.Length, encoding);
+        }
+
+        /// <summary>
+        /// Write a string to the client.
+        /// </summary>
+        /// <param name="data">
+        /// The string to write to the client.
+        /// </param>
+        /// <param name="offset">
+        /// The offset from the start of <see cref="data"/> to start writing.
+        /// </param>
+        /// <param name="count">
+        /// The maximum number of characters to write.
+        /// </param>
+        /// <param name="encoding">
+        /// The encoding which the string should be decoded with.
+        /// </param>
+        /// <returns>
+        /// True if starting the write succeeded, otherwise false.
+        /// </returns>
+        public bool Write(string data, int offset, int count, Encoding encoding = null)
+        {
+            // Default to UTF-8 if an encoding is not specified.
+            if (encoding == null)
+                encoding = Encoding.UTF8;
+
+            // Decode the string to a byte array and send it.
+            var bytes = Option<byte[]>.FromThrowingFunc(() => encoding.GetBytes(data.Substring(offset, count)));
+            return bytes.HasValue && this.Write(bytes.Get());
         }
 
         /// <summary>
