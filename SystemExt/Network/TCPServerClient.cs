@@ -73,7 +73,7 @@ namespace SystemExt.Network
         /// Write an array of bytes to the client.
         /// </summary>
         /// <param name="data">
-        /// The data to write to the clienbt.
+        /// The data to write to the client.
         /// </param>
         /// <returns>
         /// True if starting the write succeeded, otherwise false.
@@ -112,6 +112,7 @@ namespace SystemExt.Network
             {
                 // Close the socket.
                 this.CloseInternal(new NetworkError(exception));
+                return false;
             }
             return true;
         }
