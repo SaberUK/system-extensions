@@ -167,7 +167,7 @@ namespace SystemExt.Network
         /// <summary>
         /// Detaches this client from its parent.
         /// </summary>
-        internal void DetachSocket()
+        internal void DetachServer()
         {
             this.Server = null;
         }
@@ -251,8 +251,12 @@ namespace SystemExt.Network
             this.Stream.Close();
             this.Stream = null;
 
+            if (this.Server == null)
+                return;
+
             // Remove this instance from the client list.
             this.Server.Clients.Remove(this as TClient);
+            this.DetachServer();
         }
 
         /// <summary>

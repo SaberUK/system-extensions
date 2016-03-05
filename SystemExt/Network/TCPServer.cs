@@ -114,9 +114,13 @@ namespace SystemExt.Network
             foreach (var client in this.Clients.ToArray())
             {
                 if (closeClients)
+                {
                     client.Close();
+                    continue;
+                }
 
-                client.DetachSocket();
+                // Detach the child from the dead server.
+                client.DetachServer();
             }
         }
 
