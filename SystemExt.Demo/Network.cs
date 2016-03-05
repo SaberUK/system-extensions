@@ -50,7 +50,7 @@ namespace SystemExt.Demo
             /// </param>
             protected override void OnClose(NetworkError error)
             {
-                Console.WriteLine("Client {0} ({1}) disconnected from {2} (error: {3})", this.GetHashCode(), this.EndPoint, this.Server.EndPoint, error == null ? "none" : error.Message);
+                Console.WriteLine("Client {0} ({1}) disconnected from {2} (error: {3})", this.GetHashCode(), this.RemoteEndPoint, this.Server.EndPoint, error == null ? "none" : error.Message);
             }
 
             /// <summary>
@@ -58,7 +58,7 @@ namespace SystemExt.Demo
             /// </summary>
             protected override void OnOpen()
             {
-                Console.WriteLine("Client {0} ({1}) connected to {2}", this.GetHashCode(), this.EndPoint, this.Server.EndPoint);
+                Console.WriteLine("Client {0} ({1}) connected to {2}", this.GetHashCode(), this.RemoteEndPoint, this.Server.EndPoint);
             }
 
             /// <summary>
