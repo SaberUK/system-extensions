@@ -25,7 +25,7 @@ namespace SystemExt
     /// <typeparam name="T">
     /// The type which this <see cref="Option{T}"/> wraps.
     /// </typeparam>
-    public sealed class Option<T>
+    public sealed class Option<T> : IDisposable
     {
 
         /// <summary>
@@ -94,6 +94,22 @@ namespace SystemExt
         public Option<T2> AndThen<T2>(Func<T, T2> func)
         {
             return this.HasValue ? Option<T2>.FromThrowingFunc(() => func(this.Value)) : Option<T2>.None;
+        }
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
+            // If we have no value then we have nothing to do here.
+            if (!this.HasValue)
+                return;
+
+            // If we are not an IDisposable the we can't dispose resources.
+            var disposable = this.Value as IDisposable;
+            if (disposable == null)
+                return;
+
+            disposable.Dispose();
         }
 
         /// <summary>

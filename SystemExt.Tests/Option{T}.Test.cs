@@ -29,6 +29,26 @@ namespace SystemExt.Tests
     {
 
         /// <summary>
+        /// A disposable class that we use for testing.
+        /// </summary>
+        public sealed class TestDisposable : IDisposable
+        {
+
+            /// <summary>
+            /// Whether this class has been disposed.
+            /// </summary>
+            public bool Disposed;
+
+            /// <summary>
+            /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            /// </summary>
+            public void Dispose()
+            {
+                this.Disposed = true;
+            }
+        }
+
+        /// <summary>
         /// Test the <see cref="Option{T}.Create"/> method.
         /// </summary>
         [TestMethod]
@@ -47,6 +67,19 @@ namespace SystemExt.Tests
 
             // Ensure that the and operation is called when we have a value.
             Assert.AreEqual(84, result.AndThen(number => number * 2).Get());
+        }
+
+        /// <summary>
+        /// Test the <see cref="Option{T}.Dispose"/> method.
+        /// </summary>
+        [TestMethod]
+        public void Dispose()
+        {
+            var option = Option<TestDisposable>.FromThrowingFunc(() => new TestDisposable());
+
+            // Ensure that we can dispose the wrapped type correctly.
+            option.Dispose();
+            Assert.IsTrue(option.Get().Disposed);
         }
 
         /// <summary>
