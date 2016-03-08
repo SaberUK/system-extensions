@@ -157,7 +157,7 @@ namespace SystemExt.Network
             catch (Exception exception)
             {
                 // Close the socket.
-                this.CloseInternal(new NetworkError(exception));
+                this.CloseInternal(new NetworkError(NetworkOperation.Write, exception));
                 return false;
             }
             return true;
@@ -250,7 +250,7 @@ namespace SystemExt.Network
                 var byteCount = this.Stream.EndRead(result);
                 if (byteCount == 0)
                 {
-                    this.CloseInternal(new NetworkError("Connection closed"));
+                    this.CloseInternal(new NetworkError(NetworkOperation.Read, "Connection closed"));
                     return;
                 }
 
@@ -263,7 +263,7 @@ namespace SystemExt.Network
             catch (Exception exception)
             {
                 // Close the socket.
-                this.CloseInternal(new NetworkError(exception));
+                this.CloseInternal(new NetworkError(NetworkOperation.Read, exception));
             }
         }
 
@@ -286,7 +286,7 @@ namespace SystemExt.Network
             catch (Exception exception)
             {
                 // Close the socket.
-                this.CloseInternal(new NetworkError(exception));
+                this.CloseInternal(new NetworkError(NetworkOperation.Write, exception));
             }
         }
     }

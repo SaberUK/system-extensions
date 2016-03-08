@@ -37,27 +37,40 @@ namespace SystemExt.Network
         public readonly string Message;
 
         /// <summary>
+        /// The operation which was happening when this error occurred.
+        /// </summary>
+        public readonly NetworkOperation Operation;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="NetworkError"/> class with the specified
         /// socket error.
         /// </summary>
+        /// <param name="operation">
+        /// The operation which was happening when this error occurred.
+        /// </param>
         /// <param name="message">
         /// A human readable message which describes the network error.
         /// </param>
-        internal NetworkError(string message)
+        internal NetworkError(NetworkOperation operation, string message)
         {
             this.Code = SocketError.SocketError;
             this.Message = message;
+            this.Operation = operation;
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NetworkError"/> class with the specified
         /// exception.
         /// </summary>
+        /// <param name="operation">
+        /// The operation which was happening when this error occurred.
+        /// </param>
         /// <param name="exception">
         /// An exception which represents a network error.
         /// </param>
-        internal NetworkError(Exception exception)
+        internal NetworkError(NetworkOperation operation, Exception exception)
         {
+            this.Operation = operation;
             for (var inner = exception; inner != null; inner = inner.InnerException)
             {
                 if (!(inner is SocketException))
@@ -83,7 +96,7 @@ namespace SystemExt.Network
         /// </returns>
         public override string ToString()
         {
-            return this.Message;
+            return string.Format("{0} error ({1})", this.Operation, this.Message);
         }
     }
 }

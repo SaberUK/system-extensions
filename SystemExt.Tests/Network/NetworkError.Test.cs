@@ -34,59 +34,63 @@ namespace SystemExt.Tests.Network
     {
 
         /// <summary>
-        /// Test the <see cref="NetworkError(Exception)"/> constructor.
+        /// Test the <see cref="NetworkError(NetworkOperation, Exception)"/> constructor.
         /// </summary>
         [TestMethod]
         public void ExceptionConstructor()
         {
             const string socketMessage = "An attempt was made to access a socket in a way forbidden by its access permissions";
             var socketException = new SocketException((int)SocketError.AccessDenied);
-            var socketError = new NetworkError(socketException);
+            var socketError = new NetworkError(NetworkOperation.Read, socketException);
 
             // Ensure we get the correct response from Message and ToString with a top level socket exception.
             Assert.AreEqual(socketMessage, socketError.Message);
-            Assert.AreEqual(socketMessage, socketError.ToString());
+            Assert.AreEqual(string.Format("Read error ({0})", socketMessage), socketError.ToString());
 
-            // Ensure we get the correct error code from Code with a top level socket exception.
+            // Ensure we get the correct error code from Code and Operation with a top level socket exception.
             Assert.AreEqual(SocketError.AccessDenied, socketError.Code);
+            Assert.AreEqual(NetworkOperation.Read, socketError.Operation);
 
             var ioException = new IOException("Testing!", socketException);
-            var ioError = new NetworkError(ioException);
+            var ioError = new NetworkError(NetworkOperation.Write, ioException);
 
             // Ensure we get the correct response from Message and ToString with an inner socket exception.
             Assert.AreEqual(socketMessage, ioError.Message);
-            Assert.AreEqual(socketMessage, ioError.ToString());
+            Assert.AreEqual(string.Format("Write error ({0})", socketMessage), ioError.ToString());
 
-            // Ensure we get the correct error code from Code with an inner socket exception.
+            // Ensure we get the correct error code from Code and Operation with an inner socket exception.
             Assert.AreEqual(SocketError.AccessDenied, ioError.Code);
+            Assert.AreEqual(NetworkOperation.Write, ioError.Operation);
 
             const string argumentMessage = "Value does not fall within the expected range.";
             var argumentException = new ArgumentException();
-            var argumentError = new NetworkError(argumentException);
+            var argumentError = new NetworkError(NetworkOperation.Read, argumentException);
 
             // Ensure we get the correct response from Message and ToString with no socket exception.
             Assert.AreEqual(argumentMessage, argumentError.Message);
-            Assert.AreEqual(argumentMessage, argumentError.ToString());
+            Assert.AreEqual(string.Format("Read error ({0})", argumentMessage), argumentError.ToString());
 
-            // Ensure we get the correct error code from Code with no socket exception.
+            // Ensure we get the correct error code from Code and Operation with no socket exception.
             Assert.AreEqual(SocketError.SocketError, argumentError.Code);
+            Assert.AreEqual(NetworkOperation.Read, argumentError.Operation);
         }
 
         /// <summary>
-        /// Test the <see cref="NetworkError(string)"/> constructor.
+        /// Test the <see cref="NetworkError(NetworkOperation, string)"/> constructor.
         /// </summary>
         [TestMethod]
         public void StringConstructor()
         {
             const string message = "Testing!";
-            var error = new NetworkError(message);
+            var error = new NetworkError(NetworkOperation.Write, message);
 
             // Ensure we get the correct response from Message and ToString.
             Assert.AreEqual(message, error.Message);
-            Assert.AreEqual(message, error.ToString());
+            Assert.AreEqual(string.Format("Write error ({0})", message), error.ToString());
 
-            // Ensure we get the correct error code from Code.
+            // Ensure we get the correct error code from Code and Operation.
             Assert.AreEqual(SocketError.SocketError, error.Code);
+            Assert.AreEqual(NetworkOperation.Write, error.Operation);
         }
     }
 }
