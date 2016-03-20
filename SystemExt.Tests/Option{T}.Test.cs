@@ -65,6 +65,10 @@ namespace SystemExt.Tests
             Assert.AreEqual(value, result.GetOr(58));
             Assert.AreEqual(value, result.GetOr(() => 58));
 
+            var tryValue = int.MinValue;
+            Assert.IsTrue(result.TryGet(out tryValue));
+            Assert.AreEqual(value, tryValue);
+
             // Ensure that the and operation is called when we have a value.
             Assert.AreEqual(84, result.AndThen(number => number * 2).Get());
         }
@@ -129,6 +133,10 @@ namespace SystemExt.Tests
             const int value = 42;
             Assert.AreEqual(value, result.GetOr(value));
             Assert.AreEqual(value, result.GetOr(() => value));
+
+            var tryValue = int.MinValue;
+            Assert.IsFalse(result.TryGet(out tryValue));
+            Assert.AreEqual(default(int), tryValue);
 
             // Ensure that the and operation is not called when we have no value.
             Assert.AreEqual(Option<int>.None, result.AndThen(number => number * 2));

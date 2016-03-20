@@ -207,5 +207,20 @@ namespace SystemExt
         {
             return this.HasValue ? this.Value : func();
         }
+
+        /// <summary>
+        /// Attempts to retrieve the wrapped value and return a value which represents whether it was retrieved.
+        /// </summary>
+        /// <param name="value">
+        /// A reference to the variable to store the value of the wrapped value in.
+        /// </param>
+        /// <returns>
+        /// True if this <see cref="Option{T}"/> has a value. Otherwise, false.
+        /// </returns>
+        public bool TryGet(out T value)
+        {
+            value = this.Value;
+            return this.HasValue;
+        }
     }
 }
