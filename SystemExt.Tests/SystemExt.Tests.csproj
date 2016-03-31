@@ -35,7 +35,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
-    <Compile Include="ConfigurationBase.Test.cs" />
     <Compile Include="Extensions\System.Random.Test.cs" />
     <Compile Include="Extensions\System.Collections.Generic.IList{T}.Test.cs" />
     <Compile Include="Extensions\System.DateTime.Test.cs" />
@@ -60,11 +59,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Content Include="TestData\ConfigurationBase.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

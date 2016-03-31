@@ -34,7 +34,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
-    <Compile Include="ConfigurationBase.cs" />
     <Compile Include="Extensions\System.Random.cs" />
     <Compile Include="Extensions\System.Collections.Generic.IList{T}.cs" />
     <Compile Include="Extensions\System.DateTime.cs" />
