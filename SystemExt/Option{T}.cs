@@ -167,7 +167,7 @@ namespace SystemExt
         }
 
         /// <summary>
-        /// Retrieves the wrapped value if it exists and throws an <see cref="InvalidOperationException"/> if it does not.
+        /// Retrieves the wrapped value if it exists and calls <see cref="Environment.FailFast(string)"/> if it does not.
         /// </summary>
         /// <returns>
         /// The value which is wrapped by this <see cref="Option{T}"/>.
