@@ -51,7 +51,7 @@ namespace SystemExt.Network
         protected Stream Stream;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TCPServerClient{TClient}"/> class.
+        /// Initializes a new instance of the <see cref="TCPClientBase"/> class.
         /// </summary>
         /// <param name="bufferSize">
         /// The size of the read buffer.
