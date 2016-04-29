@@ -133,7 +133,7 @@ namespace SystemExt.Network
         private void EndAccept(IAsyncResult result)
         {
             // Finish accepting the current client.
-            var socket = Option<Socket>.FromThrowingFunc(() => this.Socket.EndAccept(result));
+            var socket = Maybe<Socket>.FromThrowingFunc(() => this.Socket.EndAccept(result));
 
             // If the socket read failed then the socket is dead.
             if (!socket.HasValue)

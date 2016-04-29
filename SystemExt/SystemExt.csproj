@@ -50,7 +50,7 @@
     <Compile Include="Network\NetworkError.cs" />
     <Compile Include="Network\TCPServer.cs" />
     <Compile Include="Network\TCPServerClient.cs" />
-    <Compile Include="Option{T}.cs" />
+    <Compile Include="Maybe{T}.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Terminal\ApplicationChooser.cs" />
     <Compile Include="Terminal\Prompt.cs" />

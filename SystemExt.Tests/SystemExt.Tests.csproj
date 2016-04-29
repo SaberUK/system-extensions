@@ -44,7 +44,7 @@
     <Compile Include="Log\StreamLogger.Test.cs" />
     <Compile Include="Log\DebugLogger.Test.cs" />
     <Compile Include="Network\NetworkError.Test.cs" />
-    <Compile Include="Option{T}.Test.cs" />
+    <Compile Include="Maybe{T}.Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TokenList.Test.cs" />
   </ItemGroup>

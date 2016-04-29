@@ -23,30 +23,30 @@ namespace SystemExt
     /// Represents the result of a function which may not exist.
     /// </summary>
     /// <typeparam name="T">
-    /// The type which this <see cref="Option{T}"/> wraps.
+    /// The type which this <see cref="Maybe{T}"/> wraps.
     /// </typeparam>
-    public sealed class Option<T> : IDisposable
+    public sealed class Maybe<T> : IDisposable
     {
 
         /// <summary>
-        /// Whether this <see cref="Option{T}"/> has a value.
+        /// Whether this <see cref="Maybe{T}"/> has a value.
         /// </summary>
         public readonly bool HasValue;
 
         /// <summary>
         /// The instance returned when no value is available.
         /// </summary>
-        public static readonly Option<T> None = new Option<T>(); 
+        public static readonly Maybe<T> None = new Maybe<T>(); 
 
         /// <summary>
-        /// The value this <see cref="Option{T}"/> is wrapping.
+        /// The value this <see cref="Maybe{T}"/> is wrapping.
         /// </summary>
         private readonly T Value;
 
         /// <summary>
-        /// Constructor used by the <see cref="Option{T}.None"/> instance.
+        /// Constructor used by the <see cref="Maybe{T}.None"/> instance.
         /// </summary>
-        private Option()
+        private Maybe()
         {
             this.HasValue = false;
             this.Value = default(T);
@@ -56,44 +56,44 @@ namespace SystemExt
         /// Constructor used when there is a value.
         /// </summary>
         /// <param name="value">
-        /// The value this <see cref="Option{T}"/> is wrapping.
+        /// The value this <see cref="Maybe{T}"/> is wrapping.
         /// </param>
-        private Option(T value)
+        private Maybe(T value)
         {
             this.HasValue = true;
             this.Value = value;
         }
         
         /// <summary>
-        /// Implicitly conversion from <typeparamref name="T"/> to <see cref="Option{T}"/>.
+        /// Implicitly conversion from <typeparamref name="T"/> to <see cref="Maybe{T}"/>.
         /// </summary>
         /// <param name="value">
-        /// The value the <see cref="Option{T}"/> should wrap.
+        /// The value the <see cref="Maybe{T}"/> should wrap.
         /// </param>
         /// <returns>
-        /// A new instance of the <see cref="Option{T}"/> class.
+        /// A new instance of the <see cref="Maybe{T}"/> class.
         /// </returns>
-        public static implicit operator Option<T>(T value)
+        public static implicit operator Maybe<T>(T value)
         {
-            return new Option<T>(value);
+            return new Maybe<T>(value);
         }
 
         /// <summary>
-        /// If this <see cref="Option{T}"/> is not <see cref="None"/> then call the function and return the result.
-        /// Otherwise, return <see cref="Option{T2}.None"/>.
+        /// If this <see cref="Maybe{T}"/> is not <see cref="None"/> then call the function and return the result.
+        /// Otherwise, return <see cref="Maybe{T}.None"/>.
         /// </summary>
         /// <typeparam name="T2">
         /// The return type of <paramref name="func"/>.
         /// </typeparam>
         /// <param name="func">
-        /// The function to call if this <see cref="Option{T}"/> is not null.
+        /// The function to call if this <see cref="Maybe{T}"/> is not null.
         /// </param>
         /// <returns>
-        /// Either an <see cref="Option{T2}"/> which either wraps the result of the function call, or <see cref="Option{T2}.None"/>.
+        /// Either an <see cref="Maybe{T}"/> which either wraps the result of the function call, or <see cref="Maybe{T}.None"/>.
         /// </returns>
-        public Option<T2> AndThen<T2>(Func<T, T2> func)
+        public Maybe<T2> AndThen<T2>(Func<T, T2> func)
         {
-            return this.HasValue ? Option<T2>.FromThrowingFunc(() => func(this.Value)) : Option<T2>.None;
+            return this.HasValue ? Maybe<T2>.FromThrowingFunc(() => func(this.Value)) : Maybe<T2>.None;
         }
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
@@ -113,39 +113,39 @@ namespace SystemExt
         }
 
         /// <summary>
-        /// Wraps a value in an <see cref="Option{T}"/>.
+        /// Wraps a value in an <see cref="Maybe{T}"/>.
         /// </summary>
         /// <param name="value">
-        /// The value the <see cref="Option{T}"/> should wrap.
+        /// The value the <see cref="Maybe{T}"/> should wrap.
         /// </param>
         /// <returns>
-        /// A new instance of the <see cref="Option{T}"/> class.
+        /// A new instance of the <see cref="Maybe{T}"/> class.
         /// </returns>
-        public static Option<T> Create(T value)
+        public static Maybe<T> Create(T value)
         {
-            return new Option<T>(value);
+            return new Maybe<T>(value);
         }
 
         /// <summary>
-        /// Converts a <see cref="Nullable{T2}"/> value to an <see cref="Option{T2}"/>.
+        /// Converts a <see cref="Nullable{T2}"/> value to an <see cref="Maybe{T}"/>.
         /// </summary>
         /// <typeparam name="T2">
         /// The type which is being wrapped by the <see cref="Nullable{T2}"/>.
         /// </typeparam>
         /// <param name="value">
-        /// A nullable value to convert to an <see cref="Option{T2}"/>.
+        /// A nullable value to convert to an <see cref="Maybe{T}"/>.
         /// </param>
         /// <returns>
-        /// A new option which wraps the value in <paramref name="value"/>.
+        /// A new <see cref="Maybe{T}"/> which wraps the value in <paramref name="value"/>.
         /// </returns>
-        public static Option<T2> FromNullable<T2>(T2? value)
+        public static Maybe<T2> FromNullable<T2>(T2? value)
             where T2 : struct
         {
-            return value.HasValue ? new Option<T2>(value.Value) : Option<T2>.None;
+            return value.HasValue ? new Maybe<T2>(value.Value) : Maybe<T2>.None;
         }
 
         /// <summary>
-        /// Execute a function which might throw and wraps the result in an Option{T2}.
+        /// Execute a function which might throw and wraps the result in an Maybe{T2}.
         /// </summary>
         /// <param name="func">
         /// The function to wrap the result of.
@@ -153,16 +153,16 @@ namespace SystemExt
         /// <returns>
         /// The result of executing <paramref name="func"/> or <see cref="None"/> if it throws an exception.
         /// </returns>
-        public static Option<T2> FromThrowingFunc<T2>(Func<T2> func)
+        public static Maybe<T2> FromThrowingFunc<T2>(Func<T2> func)
         {
             try
             {
                 var result = func();
-                return new Option<T2>(result);
+                return new Maybe<T2>(result);
             }
             catch (Exception)
             {
-                return Option<T2>.None;
+                return Maybe<T2>.None;
             }
         }
 
@@ -170,12 +170,12 @@ namespace SystemExt
         /// Retrieves the wrapped value if it exists and calls <see cref="Environment.FailFast(string)"/> if it does not.
         /// </summary>
         /// <returns>
-        /// The value which is wrapped by this <see cref="Option{T}"/>.
+        /// The value which is wrapped by this <see cref="Maybe{T}"/>.
         /// </returns>
         public T Get()
         {
             if (!this.HasValue)
-                Environment.FailFast(string.Format("Get was called on an empty SystemEx.Option<{0}>!", typeof(T)));
+                Environment.FailFast(string.Format("Get was called on an empty SystemEx.Maybe<{0}>!", typeof(T)));
 
             return this.Value;
         }
@@ -187,7 +187,7 @@ namespace SystemExt
         /// The value to return if there is no wrapped value.
         /// </param>
         /// <returns>
-        /// The value which is wrapped by this <see cref="Option{T}"/> or <paramref name="value"/> if it does not exist.
+        /// The value which is wrapped by this <see cref="Maybe{T}"/> or <paramref name="value"/> if it does not exist.
         /// </returns>
         public T GetOr(T value)
         {
@@ -201,7 +201,7 @@ namespace SystemExt
         /// The function to return the result of if there is no wrapped value.
         /// </param>
         /// <returns>
-        /// The value which is wrapped by this <see cref="Option{T}"/> or the result of <paramref name="func"/> if it does not exist.
+        /// The value which is wrapped by this <see cref="Maybe{T}"/> or the result of <paramref name="func"/> if it does not exist.
         /// </returns>
         public T GetOr(Func<T> func)
         {
@@ -215,7 +215,7 @@ namespace SystemExt
         /// A reference to the variable to store the value of the wrapped value in.
         /// </param>
         /// <returns>
-        /// True if this <see cref="Option{T}"/> has a value. Otherwise, false.
+        /// True if this <see cref="Maybe{T}"/> has a value. Otherwise, false.
         /// </returns>
         public bool TryGet(out T value)
         {

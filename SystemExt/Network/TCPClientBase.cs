@@ -111,7 +111,7 @@ namespace SystemExt.Network
                 encoding = Encoding.UTF8;
 
             // Decode the string to a byte array and send it.
-            var bytes = Option<byte[]>.FromThrowingFunc(() => encoding.GetBytes(data.Substring(offset, count)));
+            var bytes = Maybe<byte[]>.FromThrowingFunc(() => encoding.GetBytes(data.Substring(offset, count)));
             return bytes.HasValue && this.Write(bytes.Get());
         }
 

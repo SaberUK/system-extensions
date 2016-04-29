@@ -22,10 +22,10 @@ namespace SystemExt.Tests
 {
 
     /// <summary>
-    /// Implements tests for the <see cref="Option{T}"/> class.
+    /// Implements tests for the <see cref="Maybe{T}"/> class.
     /// </summary>
     [TestClass]
-    public sealed class SystemExt_Option_T_Test
+    public sealed class SystemExt_Maybe_T_Test
     {
 
         /// <summary>
@@ -49,15 +49,15 @@ namespace SystemExt.Tests
         }
 
         /// <summary>
-        /// Test the <see cref="Option{T}.Create"/> method.
+        /// Test the <see cref="Maybe{T}.Create"/> method.
         /// </summary>
         [TestMethod]
         public void Create()
         {
             const int value = 42;
-            var result = Option<int>.Create(value);
+            var result = Maybe<int>.Create(value);
 
-            // Ensure that the option has a value.
+            // Ensure that the maybe has a value.
             Assert.IsTrue(result.HasValue);
 
             // Ensure that we can retrieve the wrapped value.
@@ -74,59 +74,59 @@ namespace SystemExt.Tests
         }
 
         /// <summary>
-        /// Test the <see cref="Option{T}.Dispose"/> method.
+        /// Test the <see cref="Maybe{T}.Dispose"/> method.
         /// </summary>
         [TestMethod]
         public void Dispose()
         {
-            var option = Option<TestDisposable>.FromThrowingFunc(() => new TestDisposable());
+            var maybe = Maybe<TestDisposable>.FromThrowingFunc(() => new TestDisposable());
 
             // Ensure that we can dispose the wrapped type correctly.
-            option.Dispose();
-            Assert.IsTrue(option.Get().Disposed);
+            maybe.Dispose();
+            Assert.IsTrue(maybe.Get().Disposed);
         }
 
         /// <summary>
-        /// Test the <see cref="Option{T}.FromNullable{T2}"/> method.
+        /// Test the <see cref="Maybe{T}.FromNullable{T2}"/> method.
         /// </summary>
         [TestMethod]
         public void FromNullable()
         {
             const int value = 42;
 
-            // Ensure that a Nullable<T> with a value creates a valid Option<T>.
+            // Ensure that a Nullable<T> with a value creates a valid Maybe<T>.
             int? hasValue = value;
-            Assert.AreEqual(Option<int>.Create(value).Get(), Option<int>.FromNullable(hasValue).Get());
+            Assert.AreEqual(Maybe<int>.Create(value).Get(), Maybe<int>.FromNullable(hasValue).Get());
 
             // Ensure that a Nullable<T> with no value returns None.
             int? noValue = null;
-            Assert.AreEqual(Option<int>.None, Option<int>.FromNullable(noValue));
+            Assert.AreEqual(Maybe<int>.None, Maybe<int>.FromNullable(noValue));
         }
 
         /// <summary>
-        /// Test the <see cref="Option{T}.FromThrowingFunc{T2}"/> method.
+        /// Test the <see cref="Maybe{T}.FromThrowingFunc{T2}"/> method.
         /// </summary>
         [TestMethod]
         public void FromThrowingFunc()
         {
             const int value = 42;
 
-            // Ensure that a normal return value creates a valid Option<T>.
-            Assert.AreEqual(value, Option<int>.FromThrowingFunc(() => value).Get());
+            // Ensure that a normal return value creates a valid Maybe<T>.
+            Assert.AreEqual(value, Maybe<int>.FromThrowingFunc(() => value).Get());
 
             // Ensure that an exception being thrown returns None.
-            Assert.AreEqual(Option<int>.None, Option<int>.FromThrowingFunc<int>(() => { throw new Exception(); }));
+            Assert.AreEqual(Maybe<int>.None, Maybe<int>.FromThrowingFunc<int>(() => { throw new Exception(); }));
         }
 
         /// <summary>
-        /// Test the <see cref="Option{T}.None"/> value.
+        /// Test the <see cref="Maybe{T}.None"/> value.
         /// </summary>
         [TestMethod]
         public void None()
         {
-            var result = Option<int>.None;
+            var result = Maybe<int>.None;
 
-            // Ensure that the option has no value.
+            // Ensure that the maybe has no value.
             Assert.IsFalse(result.HasValue);
 
             // Ensure that we get the default values.
@@ -139,7 +139,7 @@ namespace SystemExt.Tests
             Assert.AreEqual(default(int), tryValue);
 
             // Ensure that the and operation is not called when we have no value.
-            Assert.AreEqual(Option<int>.None, result.AndThen(number => number * 2));
+            Assert.AreEqual(Maybe<int>.None, result.AndThen(number => number * 2));
         }
     }
 }
