@@ -48,6 +48,7 @@
     <Compile Include="Log\StreamLogger.cs" />
     <Compile Include="Network\NetworkHelper.cs" />
     <Compile Include="Network\NetworkOperation.cs" />
+    <Compile Include="Network\TCPClient.cs" />
     <Compile Include="Network\TCPClientBase.cs" />
     <Compile Include="Network\NetworkError.cs" />
     <Compile Include="Network\TCPServer.cs" />

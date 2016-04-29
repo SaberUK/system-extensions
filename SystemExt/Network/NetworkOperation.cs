@@ -22,6 +22,10 @@ namespace SystemExt.Network
     /// </summary>
     public enum NetworkOperation
     {
+        /// <summary>
+        /// The operation is connecting to a remote server.
+        /// </summary>
+        Connect,
 
         /// <summary>
         /// The operation is reading from a socket.
