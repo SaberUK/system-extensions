@@ -29,7 +29,7 @@ namespace SystemExt.Extensions
         /// <summary>
         /// Generates a random ASCII string with the specified length.
         /// </summary>
-        /// <param name="random">
+        /// <param name="self">
         /// An instance of the <see cref="Random"/> class.
         /// </param>
         /// <param name="length">
@@ -41,12 +41,12 @@ namespace SystemExt.Extensions
         /// <returns>
         /// A new string containing <paramref name="length"/> random characters.
         /// </returns>
-        public static string NextString(this Random random, byte length, bool printable = true)
+        public static string NextString(this Random self, byte length, bool printable = true)
         {
             var buffer = new byte[length];
             for (var pos = 0; pos < length; pos++)
             {
-                buffer[pos] = (byte)(printable ? random.Next(33, 126) : random.Next(0, 255));
+                buffer[pos] = (byte)(printable ? self.Next(33, 126) : self.Next(0, 255));
             }
             return Encoding.ASCII.GetString(buffer);
         }
