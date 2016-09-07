@@ -44,6 +44,7 @@
     <Compile Include="Log\LoggerInfo.Test.cs" />
     <Compile Include="Log\StreamLogger.Test.cs" />
     <Compile Include="Log\DebugLogger.Test.cs" />
+    <Compile Include="Network\NetworkHelper.Test.cs" />
     <Compile Include="Network\NetworkError.Test.cs" />
     <Compile Include="Maybe{T}.Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

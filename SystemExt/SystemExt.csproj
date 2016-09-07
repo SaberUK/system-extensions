@@ -46,6 +46,7 @@
     <Compile Include="Log\LogLevel.cs" />
     <Compile Include="Log\LogManager.cs" />
     <Compile Include="Log\StreamLogger.cs" />
+    <Compile Include="Network\NetworkHelper.cs" />
     <Compile Include="Network\NetworkOperation.cs" />
     <Compile Include="Network\TCPClientBase.cs" />
     <Compile Include="Network\NetworkError.cs" />
