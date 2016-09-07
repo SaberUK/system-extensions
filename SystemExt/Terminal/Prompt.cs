@@ -143,16 +143,31 @@ namespace SystemExt.Terminal
         /// <param name="defaultValue">
         /// The answer to return if the user just presses enter.
         /// </param>
+        /// <param name="validator">
+        /// A function which validates the user's input.
+        /// </param>
         /// <returns>
         /// The response given by the user.
         /// </returns>
-        public static string String(string question, string defaultValue = null)
+        public static string String(string question, string defaultValue = null, Func<string, bool> validator = null)
         {
-            Console.WriteLine("{0}?", question);
-            Console.Write("[{0}] => ", defaultValue);
+            while (true)
+            {
+                Console.WriteLine("{0}?", question);
+                Console.Write("[{0}] => ", defaultValue);
 
-            var input = Console.ReadLine();
-            return string.IsNullOrEmpty(input) ? defaultValue : input;
+                var input = Console.ReadLine();
+                if (string.IsNullOrEmpty(input))
+                    return defaultValue;
+
+                if (validator != null && !validator(input))
+                {
+                    Console.Error.WriteLine("The value you have given is not valid.");
+                    continue;
+                }
+
+                return input;
+            }
         }
     }
 }
