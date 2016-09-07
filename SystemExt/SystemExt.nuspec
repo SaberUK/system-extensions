@@ -11,19 +11,11 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>
-- Rename Option{T} to Maybe{T}.
-- Add methods for prompting for command line input.
-- Fix a minor documentation error in TCPClientBase.
-- Remove the ConfigurationBase class.
-- Fix a minor documentation error in Option{T}.
-- Add the TryGet method to Option{T}.
-- Add the NetworkOperation enumeration to NetworkError.
-- Implement IDisposable in Option{T}.
-- Split part of TCPServerClient into TCPClientBase.
-- Automatically detach closed TCPServerChild instances from the parent.
-- Change the constructors for NetworkError to be internal.
-- Add overloads of TCPServerClient#Write that take a string.
-- Fix some minor errors in TCPServerClient.
+- Add an extension method to determine whether a stream is finished.
+- Fix a few minor style problems.
+- Add support for validating input to Prompt#String.
+- Add helper methods for determining whether an IP address is valid.
+- Make implementing TCPServerClient#OnWrite optional.
     </releaseNotes>
     <copyright>Copyright (C) 2014-2016 Peter "SaberUK" Powell &lt;petpow@saberuk.com&gt;</copyright>
     <tags>System Extensions</tags>
