@@ -43,12 +43,12 @@ namespace SystemExt.Network
         /// <summary>
         /// The buffer that bytes are stored in when read.
         /// </summary>
-        protected readonly byte[] ReadBuffer;
+        internal protected readonly byte[] ReadBuffer;
 
         /// <summary>
-        /// The underlying network socket.
+        /// The underlying network stream.
         /// </summary>
-        protected Stream Stream;
+        internal protected Stream Stream;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TCPClientBase"/> class.
