@@ -89,16 +89,5 @@ namespace SystemExt.Network
             this.Server.Clients.Remove(this as TClient);
             this.DetachServer();
         }
-
-        /// <summary>
-        /// Event which is called when data has been written over the socket.
-        /// </summary>
-        /// <param name="data">
-        /// The data which was written.
-        /// </param>
-        /// <param name="count">
-        /// The number of bytes which were written.
-        /// </param>
-        protected override void OnWrite(byte[] data, int count) { }
     }
 }

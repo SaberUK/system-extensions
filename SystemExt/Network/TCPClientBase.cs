@@ -197,7 +197,7 @@ namespace SystemExt.Network
         /// <param name="count">
         /// The number of bytes which were written.
         /// </param>
-        protected abstract void OnWrite(byte[] data, int count);
+        protected virtual void OnWrite(byte[] data, int count) { }
 
         /// <summary>
         /// Terminate the connection.
