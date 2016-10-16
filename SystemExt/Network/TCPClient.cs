@@ -29,6 +29,11 @@ namespace SystemExt.Network
     {
 
         /// <summary>
+        /// Implementation defined data.
+        /// </summary>
+        public object Data;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="TCPServerClient{TClient}"/> class.
         /// </summary>
         /// <param name="bufferSize">
