@@ -17,13 +17,11 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-using SystemExt;
-
 // Application
 [assembly: AssemblyDescription("Implements useful extensions for the .NET Base Class Library.")]
 [assembly: AssemblyProduct("System Extensions")]
 [assembly: AssemblyTitle("System Extensions")]
-[assembly: AssemblyVersion(Constants.Version)]
+[assembly: AssemblyVersion("0.3.1.*")]
 
 // Author
 [assembly: AssemblyCompany("Peter \"SaberUK\" Powell")]
@@ -31,7 +29,6 @@ using SystemExt;
 [assembly: AssemblyTrademark("Copyright (C) 2014-2016 Peter \"SaberUK\" Powell")]
 
 // Unit Testing
-[assembly: InternalsVisibleTo("SystemExt.Demo")]
 [assembly: InternalsVisibleTo("SystemExt.Tests")]
 
 #if DEBUG

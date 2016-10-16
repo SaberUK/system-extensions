@@ -22,7 +22,6 @@ using SystemExt;
 [assembly: AssemblyDescription("Demo for System Extensions.")]
 [assembly: AssemblyProduct("System Extensions")]
 [assembly: AssemblyTitle("System Extensions Demo")]
-[assembly: AssemblyVersion(Constants.Version)]
 
 // Author
 [assembly: AssemblyCompany("Peter \"SaberUK\" Powell")]

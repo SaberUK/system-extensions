@@ -22,7 +22,6 @@ using SystemExt;
 [assembly: AssemblyDescription("Unit Tests for System Extensions.")]
 [assembly: AssemblyProduct("System Extensions")]
 [assembly: AssemblyTitle("System Extensions Unit Tests")]
-[assembly: AssemblyVersion(Constants.Version)]
 
 // Author
 [assembly: AssemblyCompany("Peter \"SaberUK\" Powell")]
