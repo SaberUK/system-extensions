@@ -11,9 +11,8 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>
-- Make OnWrite optional in TCPClientBase instead of TCPServerClient.
-- Make various TCPClientBase fields protected.
-- Implement a system for creating TCP clients.
+- Add an implementation defined data field to the TCPClient class.
+- Add a TCPClient#Connect overload that takes a hostname.
     </releaseNotes>
     <copyright>Copyright (C) 2014-2016 Peter "SaberUK" Powell &lt;petpow@saberuk.com&gt;</copyright>
     <tags>System Extensions</tags>
