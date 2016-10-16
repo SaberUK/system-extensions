@@ -28,6 +28,11 @@ namespace SystemExt.Network
         Connect,
 
         /// <summary>
+        /// The operation is looking up a hostname.
+        /// </summary>
+        DNS,
+
+        /// <summary>
         /// The operation is reading from a socket.
         /// </summary>
         Read,

@@ -46,7 +46,9 @@ namespace SystemExt.Demo
             /// </param>
             protected override void OnClose(NetworkError error)
             {
-                Console.WriteLine("Disconnected from {0} (error: {1})", this.RemoteEndPoint, error == null ? "none" : error.Message);
+                Console.WriteLine("Disconnected from {0} (error: {1})",
+                    this.RemoteEndPoint == null ? "the server" : this.RemoteEndPoint.ToString(),
+                    error == null ? "none" : error.Message);
             }
 
             /// <summary>
@@ -175,11 +177,10 @@ namespace SystemExt.Demo
         /// </returns>
         private static int RunEchoClient(string[] arg)
         {
-            var address = Prompt.String("What adddress do you want to connect to", "127.0.0.1", NetworkHelper.IsValidAddress);
+            var address = Prompt.String("What hostname or IP addresss do you want to connect to", "127.0.0.1");
             var port = (ushort)Prompt.Integer("What port do you want to connect to", 9999, ushort.MinValue, ushort.MaxValue);
-            var endPoint = new IPEndPoint(IPAddress.Parse(address), port);
-            var client = TCPClient<EchoClient>.Connect(endPoint);
-            Console.WriteLine("Now connecting to {0}, press return to exit.", endPoint);
+            var client = TCPClient<EchoClient>.Connect(address, port);
+            Console.WriteLine("Now connecting to {0}:{1}, press return to exit.", address, port);
             for (var line = Console.ReadLine(); !string.IsNullOrEmpty(line); line = Console.ReadLine())
             {
                 client.Write(line);

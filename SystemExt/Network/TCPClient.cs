@@ -44,6 +44,29 @@ namespace SystemExt.Network
         /// <summary>
         /// Attempt to connect to the specified remote server.
         /// </summary>
+        /// <param name="host">
+        /// Hostname or IP address to connect to.
+        /// </param>
+        /// <param name="port">
+        /// TCP port to connect to.
+        /// </param>
+        /// <returns>
+        /// A new instance of the <see cref="TClient"/> class which represents the connection.
+        /// </returns>
+        public static TClient Connect(string host, ushort port)
+        {
+            IPAddress address;
+            if (IPAddress.TryParse(host, out address))
+                return TCPClient<TClient>.Connect(new IPEndPoint(address, port));
+
+            var client = new TClient();
+            Dns.BeginGetHostAddresses(host, client.EndGetHostAddresses, port);
+            return client;
+        }
+
+        /// <summary>
+        /// Attempt to connect to the specified remote server.
+        /// </summary>
         /// <param name="address">
         /// IP address to connect to.
         /// </param>
@@ -94,6 +117,37 @@ namespace SystemExt.Network
             {
                 // Fire the close event.
                 this.OnClose(new NetworkError(NetworkOperation.Connect, exception));
+            }
+        }
+
+        /// <summary>
+        /// Callback for Dns#BeginGetHostAddresses.
+        /// </summary>
+        /// <param name="result">
+        /// The status of the asynchronous operation.
+        /// </param>
+        private void EndGetHostAddresses(IAsyncResult result)
+        {
+            try
+            {
+                var addresses = Dns.EndGetHostAddresses(result);
+                var port = (ushort)result.AsyncState;
+                if (addresses.Length == 0)
+                {
+                    this.OnClose(new NetworkError(NetworkOperation.DNS, "DNS lookup succeeded but returned no results"));
+                    return;
+                }
+
+                var random = new Random();
+                var address = addresses[random.Next(0, addresses.Length)];
+
+                var socket = new Socket(address.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+                socket.BeginConnect(address, port, this.EndConnect, socket);
+            }
+            catch (Exception exception)
+            {
+                // Fire the close event.
+                this.OnClose(new NetworkError(NetworkOperation.DNS, exception));
             }
         }
     }
