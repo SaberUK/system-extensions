@@ -11,11 +11,9 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>
-- Add an extension method to determine whether a stream is finished.
-- Fix a few minor style problems.
-- Add support for validating input to Prompt#String.
-- Add helper methods for determining whether an IP address is valid.
-- Make implementing TCPServerClient#OnWrite optional.
+- Make OnWrite optional in TCPClientBase instead of TCPServerClient.
+- Make various TCPClientBase fields protected.
+- Implement a system for creating TCP clients.
     </releaseNotes>
     <copyright>Copyright (C) 2014-2016 Peter "SaberUK" Powell &lt;petpow@saberuk.com&gt;</copyright>
     <tags>System Extensions</tags>
