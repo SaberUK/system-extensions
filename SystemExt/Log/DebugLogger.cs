@@ -14,6 +14,7 @@
  * the License.
  */
 
+using System;
 using System.Diagnostics;
 
 namespace SystemExt.Log
@@ -26,6 +27,23 @@ namespace SystemExt.Log
     {
 
         /// <summary>
+        /// Whether the current date/time should be included with log messages.
+        /// </summary>
+        private readonly bool IncludeDateTime;
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DebugLogger"/> class with whether the
+        /// current date/time should be included with log messages.
+        /// </summary>
+        /// <param name="includeDateTime">
+        /// Whether the current date/time should be included with log messages.
+        /// </param>
+        public DebugLogger(bool includeDateTime = false)
+        {
+            this.IncludeDateTime = includeDateTime; 
+        }
+
+        /// <summary>
         /// Write a message to this logger.
         /// </summary>
         /// <param name="component">
@@ -36,7 +54,8 @@ namespace SystemExt.Log
         /// </param>
         public void Write(string component, string message)
         {
-            Debug.WriteLine("[{0}] {1}", component, message);
+            var dateTime = this.IncludeDateTime ? DateTime.Now.ToString(Constants.LogDateTimeFormat) : string.Empty;
+            Debug.WriteLine("{0}[{1}] {2}", dateTime, component, message);
         }
     }
 }

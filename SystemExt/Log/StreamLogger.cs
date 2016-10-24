@@ -14,6 +14,7 @@
  * the License.
  */
 
+using System;
 using System.IO;
 using System.Text;
 
@@ -25,6 +26,11 @@ namespace SystemExt.Log
     /// </summary>
     public sealed class StreamLogger : ILogger
     {
+
+        /// <summary>
+        /// Whether the current date/time should be included with log messages.
+        /// </summary>
+        private readonly bool IncludeDateTime;
 
         /// <summary>
         /// The underlying stream writer.
@@ -42,7 +48,25 @@ namespace SystemExt.Log
         /// The encoding to use when writing to the stream.
         /// </param>
         public StreamLogger(Stream stream, Encoding encoding = null)
+            : this(false, stream, encoding) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StreamLogger"/> class with whether the
+        /// current date/time should be included with log messages, the specified stream to write
+        /// to, and optionally the encoding to use when writing.
+        /// </summary>
+        /// <param name="includeDateTime">
+        /// Whether the current date/time should be included with log messages.
+        /// </param>
+        /// <param name="stream">
+        /// The stream to write log messages to.
+        /// </param>
+        /// <param name="encoding">
+        /// The encoding to use when writing to the stream.
+        /// </param>
+        public StreamLogger(bool includeDateTime, Stream stream, Encoding encoding = null)
         {
+            this.IncludeDateTime = includeDateTime; 
             this.StreamWriter = new StreamWriter(stream, encoding ?? Encoding.Default)
             {
                 AutoFlush = true
@@ -60,7 +84,8 @@ namespace SystemExt.Log
         /// </param>
         public void Write(string component, string message)
         {
-            this.StreamWriter.WriteLine("[{0}] {1}", component, message);
+            var dateTime = this.IncludeDateTime ? DateTime.Now.ToString(Constants.LogDateTimeFormat) : string.Empty;
+            this.StreamWriter.WriteLine("{0}[{1}] {2}", dateTime, component, message);
         }
     }
 }
