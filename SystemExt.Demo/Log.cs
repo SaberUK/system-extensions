@@ -67,6 +67,7 @@ namespace SystemExt.Demo
                 Console.WriteLine("Component filter set to {0}", logToken);
                 manager.Write(LogLevel.Verbose, "DEMO1", "Logging with the DEMO1 component!");
                 manager.Write(LogLevel.Verbose, "DEMO2", "Logging with the DEMO2 component!");
+                manager.Write(LogLevel.Verbose, manager, "Logging with the LogManager component!");
             }
 
             Console.WriteLine("Press any key to exit.");

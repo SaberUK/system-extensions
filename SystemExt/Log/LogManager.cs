@@ -100,6 +100,26 @@ namespace SystemExt.Log
         }
 
         /// <summary>
+        /// Writes a message to the loggers.
+        /// </summary>
+        /// <param name="level">
+        /// The level at which this message is to be logged.
+        /// </param>
+        /// <param name="component">
+        /// The object which is logging this message.
+        /// </param>
+        /// <param name="message">
+        /// A message to write to the loggers.
+        /// </param>
+        /// <param name="args">
+        /// A variable number of arguments to format <paramref name="message"/> with.
+        /// </param>
+        public void Write(LogLevel level, object component, string message, params object[] args)
+        {
+            this.Write(level, component.GetType().Name, message, args);
+        }
+
+        /// <summary>
         /// Write a message to the loggers if DEBUG was defined at compile time.
         /// </summary>
         /// <param name="level">
@@ -121,6 +141,27 @@ namespace SystemExt.Log
         }
 
         /// <summary>
+        /// Write a message to the loggers if DEBUG was defined at compile time.
+        /// </summary>
+        /// <param name="level">
+        /// The level at which this message is to be logged.
+        /// </param>
+        /// <param name="component">
+        /// The object which is logging this message.
+        /// </param>
+        /// <param name="message">
+        /// A message to write to the loggers.
+        /// </param>
+        /// <param name="args">
+        /// A variable number of arguments to format <paramref name="message"/> with.
+        /// </param>
+        [Conditional("DEBUG")]
+        public void WriteDebug(LogLevel level, object component, string message, params object[] args)
+        {
+            this.Write(level, component.GetType().Name, message, args);
+        }
+
+        /// <summary>
         /// Write a message to the loggers if RELEASE was defined at compile time.
         /// </summary>
         /// <param name="level">
@@ -139,6 +180,27 @@ namespace SystemExt.Log
         public void WriteRelease(LogLevel level, string component, string message, params object[] args)
         {
             this.Write(level, component, message, args);
+        }
+
+        /// <summary>
+        /// Write a message to the loggers if RELEASE was defined at compile time.
+        /// </summary>
+        /// <param name="level">
+        /// The level at which this message is to be logged.
+        /// </param>
+        /// <param name="component">
+        /// The object which is logging this message.
+        /// </param>
+        /// <param name="message">
+        /// A message to write to the loggers.
+        /// </param>
+        /// <param name="args">
+        /// A variable number of arguments to format <paramref name="message"/> with.
+        /// </param>
+        [Conditional("RELEASE")]
+        public void WriteRelease(LogLevel level, object component, string message, params object[] args)
+        {
+            this.Write(level, component.GetType().Name, message, args);
         }
     }
 }
