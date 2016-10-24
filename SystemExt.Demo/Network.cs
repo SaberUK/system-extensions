@@ -29,6 +29,9 @@ namespace SystemExt.Demo
     public static class Network
     {
 
+        /// <summary>
+        /// Implements a basic echo client.
+        /// </summary>
         private class EchoClient : TCPClient<EchoClient>
         {
 
