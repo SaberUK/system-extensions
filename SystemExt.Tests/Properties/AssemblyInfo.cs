@@ -16,8 +16,6 @@
 
 using System.Reflection;
 
-using SystemExt;
-
 // Application
 [assembly: AssemblyDescription("Unit Tests for System Extensions.")]
 [assembly: AssemblyProduct("System Extensions")]

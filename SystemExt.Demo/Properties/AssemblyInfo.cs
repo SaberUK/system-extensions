@@ -16,8 +16,6 @@
 
 using System.Reflection;
 
-using SystemExt;
-
 // Application
 [assembly: AssemblyDescription("Demo for System Extensions.")]
 [assembly: AssemblyProduct("System Extensions")]
