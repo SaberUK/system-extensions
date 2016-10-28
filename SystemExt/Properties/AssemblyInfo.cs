@@ -21,7 +21,7 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyDescription("Implements useful extensions for the .NET Base Class Library.")]
 [assembly: AssemblyProduct("System Extensions")]
 [assembly: AssemblyTitle("System Extensions")]
-[assembly: AssemblyVersion("0.4.1.*")]
+[assembly: AssemblyVersion("0.4.2.*")]
 
 // Author
 [assembly: AssemblyCompany("Peter \"SaberUK\" Powell")]

@@ -11,8 +11,9 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>
-- Add an implementation defined data field to the TCPClient class.
-- Add a TCPClient#Connect overload that takes a hostname.
+- Add an overload of LogManager#Write that takes an object component.
+- Optionally add the current date/time to log messages.
+- Add an extension method for removing sublists from an IList{T}.
     </releaseNotes>
     <copyright>Copyright (C) 2014-2016 Peter "SaberUK" Powell &lt;petpow@saberuk.com&gt;</copyright>
     <tags>System Extensions</tags>
