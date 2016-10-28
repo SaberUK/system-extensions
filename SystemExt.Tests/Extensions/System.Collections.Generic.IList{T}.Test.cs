@@ -74,5 +74,37 @@ namespace SystemExt.Tests.Extensions
             Assert.AreEqual(testData.ElementAtOrValue(int.MinValue, -1), -1);
             Assert.AreEqual(testData.ElementAtOrValue(int.MaxValue, -1), -1);
         }
+
+        /// <summary>
+        /// Test the <see cref="System_Collections_Generic_IList_T.TakeOff{T}"/> extension method.
+        /// </summary>
+        [TestMethod]
+        public void TakeOff()
+        {
+            var testDataFirst = new List<int>
+            {
+                1, 2, 3
+            };
+            var testDataSecond = new List<int>
+            {
+                4, 5, 6
+            };
+            var testDataFull = new List<int>
+            {
+                1, 2, 3, 4, 5, 6
+            };
+            
+            // Ensure that the right amount of items are removed.
+            var taken = testDataFull.TakeOff(3);
+            Assert.AreEqual(3, testDataFull.Count);
+
+            // Ensure that the right items are removed.
+            for (var i = 0; i < taken.Count; i++)
+                Assert.AreEqual(testDataFirst[i], taken[i]);
+
+            // Ensure that the right items are left behind.
+            for (var i = 0; i < taken.Count; i++)
+                Assert.AreEqual(testDataSecond[i], testDataFull[i]);
+        }
     }
 }

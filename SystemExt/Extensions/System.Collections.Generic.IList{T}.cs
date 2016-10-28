@@ -15,6 +15,7 @@
  */
 
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SystemExt.Extensions
 {
@@ -66,6 +67,30 @@ namespace SystemExt.Extensions
         public static T ElementAtOrValue<T>(this IList<T> self, int index, T defaultValue)
         {
             return index >= 0 && index < self.Count ? self[index] : defaultValue;
+        }
+
+        /// <summary>
+        /// Removes a specified number of contiguous elements from the start of the sequence and
+        /// returns them as a new sequence.
+        /// </summary>
+        /// <typeparam name="T">
+        /// The type of the elements in <paramref name="self"/>.
+        /// </typeparam>
+        /// <param name="self">
+        /// An <see cref="IList{T}"/> to return an element from.
+        /// </param>
+        /// <param name="count">
+        /// The number of elements to return
+        /// </param>
+        /// <returns>
+        /// A new instance of the <see cref="IList{T}"/> class containing the removed elements.
+        /// </returns>
+        public static IList<T> TakeOff<T>(this IList<T> self, int count)
+        {
+            var elements = self.Take(count).ToList();
+            for (var i = 0; i < count; ++i)
+                self.RemoveAt(0);
+            return elements;
         }
     }
 }
