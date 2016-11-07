@@ -124,7 +124,7 @@ namespace SystemExt.Network
         /// <returns>
         /// True if starting the write succeeded, otherwise false.
         /// </returns>
-        public bool Write(byte[] data)
+        public bool Write(params byte[] data)
         {
             return this.Write(data, 0, data.Length);
         }
