@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Terminal.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Network.cs" />
     <Compile Include="Program.cs" />

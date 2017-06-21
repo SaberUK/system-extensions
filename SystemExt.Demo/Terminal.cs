@@ -14,19 +14,23 @@
  * the License.
  */
 
+using System;
+using System.Net;
+
+using SystemExt.Network;
 using SystemExt.Terminal;
 
 namespace SystemExt.Demo
 {
 
     /// <summary>
-    /// Main class.
+    /// Demo for <see cref="SystemExt.Terminal"/>.
     /// </summary>
-    public static class Program
+    public static class Terminal
     {
 
         /// <summary>
-        /// Main entry point.
+        /// Entry point for the <see cref="SystemExt.Terminal"/> demo.
         /// </summary>
         /// <param name="args">
         /// Command line arguments.
@@ -34,13 +38,29 @@ namespace SystemExt.Demo
         /// <returns>
         /// The code to terminate the application with on exit.
         /// </returns>
-        private static int Main(string[] args)
+        public static int EntryPoint(string[] args)
         {
             return new ApplicationChooser()
-                .AddEntryPoint(Log.EntryPoint, "Run the SystemExt.Log demo")
-                .AddEntryPoint(Network.EntryPoint, "Run the SystemExt.Network demo")
-                .AddEntryPoint(Terminal.EntryPoint, "Run the SystemExt.Terminal demo")
+                .AddEntryPoint(PromptUsage, "Show the usage of the Prompt class")
                 .Run(args);
+        }
+
+        /// <summary>
+        /// A demo which shows how to use the Prompt class.
+        /// </summary>
+        /// <param name="arg">
+        /// Command line arguments.
+        /// </param>
+        /// <returns>
+        /// The code to terminate the application with on exit.
+        /// </returns>
+        private static int PromptUsage(string[] arg)
+        {
+            Console.WriteLine("Result: {0}", Prompt.Boolean("Boolean prompt"));
+            Console.WriteLine("Result: {0}", Prompt.Float("Float prompt"));
+            Console.WriteLine("Result: {0}", Prompt.Integer("Integer prompt"));
+            Console.WriteLine("Result: {0}", Prompt.String("String prompt"));
+            return 0;
         }
     }
 }
