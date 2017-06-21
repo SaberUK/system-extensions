@@ -154,7 +154,7 @@ namespace SystemExt.Terminal
             while (true)
             {
                 Console.WriteLine("{0}?", question);
-                Console.Write("[{0}] => ", defaultValue);
+                Console.Write("[{0}] => ", defaultValue ?? "(null)");
 
                 var input = Console.ReadLine();
                 if (string.IsNullOrEmpty(input))
