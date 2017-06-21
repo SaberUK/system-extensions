@@ -153,7 +153,7 @@ namespace SystemExt.Demo
         }
 
         /// <summary>
-        /// Entry point for the <see cref="SystemExt.Log"/> demo.
+        /// Entry point for the <see cref="SystemExt.Network"/> demo.
         /// </summary>
         /// <param name="args">
         /// Command line arguments.
